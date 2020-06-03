@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "DevOps-Course-TDD"
+version = "0.1.0"
+description = ""
+authors = ["Robert Owen <robert.owen@softwire.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+flask-restx = "^0.2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

@@ -1,0 +1,4 @@
+.idea
+.hypothesis
+*.egg-info
+*.pyc
