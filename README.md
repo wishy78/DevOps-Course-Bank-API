@@ -4,7 +4,7 @@ This is a standalone exercise to practice writing tests and engaging in Test Dri
 
 ## Setup
 
-This project requires Python 3.6 and uses Poetry for Python to handle dependencies. Follow the instructions 
+This project requires Python 3.7 and uses Poetry for Python to handle dependencies. Follow the instructions 
 [here](https://python-poetry.org/docs/#installation) to set up Poetry.
 
 Once configured, the following commands (run from the project root) will install project dependencies:

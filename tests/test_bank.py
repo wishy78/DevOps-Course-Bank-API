@@ -4,9 +4,11 @@ import pytest
 
 from devops_course_tdd.bank import Bank, Account
 
+
 @pytest.fixture
 def bank() -> Bank:
     return Bank()
+
 
 def test_accounts_are_immutable():
     account = Account('Immutable')
