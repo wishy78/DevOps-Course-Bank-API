@@ -7,6 +7,7 @@ authors = ["Robert Owen <robert.owen@softwire.com>"]
 [tool.poetry.dependencies]
 python = "^3.6"
 flask-restx = "^0.2.0"
+hypothesis = "^5.16.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

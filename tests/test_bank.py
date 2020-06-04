@@ -1,6 +1,8 @@
 """Unit tests for bank.py"""
 
 import pytest
+from hypothesis import given
+from hypothesis.strategies import integers, floats
 
 from bank_api.bank import Bank, Account
 
@@ -44,5 +46,35 @@ def test_cannot_modify_accounts_set(bank):
     assert len(bank.accounts) == 0
 
 
-# TODO: Add unit tests for bank.add_funds()
+@given(amount=integers())
+def test_add_funds(amount):
+    bank = Bank()
+    bank.create_account('Test')
+    bank.add_funds('Test', amount)
+    transactions = bank.transactions
 
+    assert len(transactions) == 1
+    assert transactions.pop().amount == amount
+
+
+def test_add_funds_no_account(bank):
+    with pytest.raises(ValueError):
+        bank.add_funds('no-account', 3)
+
+
+def test_add_multiple_funds(bank):
+    bank.create_account('Test')
+    bank.add_funds('Test', 50)
+    bank.add_funds('Test', 25)
+
+    transactions = bank.transactions
+    assert len(transactions) == 2
+    assert {t.amount for t in transactions} == {25, 50}
+
+
+@given(amount=floats())
+def test_add_fractional_funds(amount):
+    bank = Bank()
+    bank.create_account('Test')
+    with pytest.raises(TypeError):
+        bank.add_funds('Test', amount)
