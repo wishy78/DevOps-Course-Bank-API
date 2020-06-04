@@ -7,11 +7,13 @@ from bank_api.bank import Bank
 
 
 # Set up framework and service classes
+from bank_api.bank_reporter import BankReporter
 
 app = Flask(__name__)
 api = Api(app, title='My Banking API',
           description='A simple banking API for learning Test-Driven-Development')
 bank = Bank()
+bank_reporter = BankReporter(bank)
 
 # Custom API documentation
 add_money = api.model("Add", {
@@ -32,7 +34,9 @@ class AccountResource(Resource):
     def get(self, name):
         """Get an Account"""
         try:
-            return asdict(bank.get_account(name))
+            account = asdict(bank.get_account(name))
+            account['balance'] = bank_reporter.get_balance(account['name'])
+            return account
         except Exception:
             abort(404, 'Account not found')
 
