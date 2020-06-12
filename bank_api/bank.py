@@ -19,10 +19,22 @@ class OverdrawnError(ValueError):
     pass
 
 
+class TransactionSet(set):
+    def add(self, new: Transaction):
+        """Override parent add method to include balance check"""
+        if (
+                new.amount < 0 and
+                new.amount + sum(t.amount for t in self if t.account == new.account) < 0
+        ):
+            raise OverdrawnError
+        else:
+            return super().add(new)
+
+
 class Bank:
     def __init__(self):
         self._accounts: Set[Account] = set()
-        self._transactions: Set[Transaction] = set()
+        self._transactions: TransactionSet[Transaction] = TransactionSet()
 
     @property
     def accounts(self) -> Set[Account]:
@@ -53,8 +65,6 @@ class Bank:
             raise TypeError('Amount must be an integer.')
         account = self.get_account(name)
 
-        self._validate_movement(account, amount)
-
         now = datetime.now()
         self._transactions.add(Transaction(account, now, amount))
 
@@ -67,13 +77,5 @@ class Bank:
 
         now = datetime.now()
 
-        self._validate_movement(account_from, -1 * amount)
-        self._validate_movement(account_to, amount)
-
         self._transactions.add(Transaction(account_from, now, -1 * amount))
         self._transactions.add(Transaction(account_to, now, amount))
-
-    def _validate_movement(self, account: Account, change: int):
-        current_balance = sum(t.amount for t in self.transactions if t.account == account)
-        if current_balance + change < 0:
-            raise OverdrawnError()
