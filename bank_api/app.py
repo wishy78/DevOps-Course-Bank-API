@@ -3,7 +3,7 @@ from dataclasses import asdict
 from flask import Flask
 from flask_restx import Api, Resource, reqparse, fields, abort
 
-from devops_course_tdd.bank import Bank
+from bank_api.bank import Bank
 
 
 # Set up framework and service classes

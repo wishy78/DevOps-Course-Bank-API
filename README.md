@@ -1,4 +1,4 @@
-# TDD Exercise
+# Bank API
 
 This is a standalone exercise to practice writing tests and engaging in Test Driven Development (TDD).
 
@@ -7,9 +7,9 @@ This is a standalone exercise to practice writing tests and engaging in Test Dri
 This project requires Python 3.7 and uses Poetry for Python to handle dependencies. Follow the instructions 
 [here](https://python-poetry.org/docs/#installation) to set up Poetry.
 
-Once configured, the following commands (run from the project root) will install project dependencies:
-1. `poetry shell`
-2. `poetry install`
+Once configured, the following command (run from the project root) will install project dependencies:
+
+`$ poetry install`
 
 To launch the API, run the `app.py` file from within the poetry 
 shell. The API should be live and swagger docs visible at http://localhost:5000/.

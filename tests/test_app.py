@@ -1,7 +1,7 @@
 """Integration tests for app.py"""
 import pytest
 
-from devops_course_tdd.app import app
+from bank_api.app import app
 
 
 @pytest.fixture

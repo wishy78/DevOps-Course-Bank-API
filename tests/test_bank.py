@@ -2,7 +2,7 @@
 
 import pytest
 
-from devops_course_tdd.bank import Bank, Account
+from bank_api.bank import Bank, Account
 
 
 @pytest.fixture

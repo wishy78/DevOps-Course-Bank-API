@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "DevOps-Course-TDD"
+name = "bank_api"
 version = "0.1.0"
 description = ""
 authors = ["Robert Owen <robert.owen@softwire.com>"]
