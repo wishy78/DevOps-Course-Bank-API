@@ -7,24 +7,20 @@ This is a standalone exercise to practice writing tests and engaging in Test Dri
 This project requires Python 3.7 and uses Poetry for Python to handle dependencies. Follow the instructions 
 [here](https://python-poetry.org/docs/#installation) to set up Poetry.
 
-If this is the first time you're using poetry you'll want to run 
-
-`$ poetry config virtualenvs.in-project true`
-
-This will insure that running `poetry install` below will install the virtual environment in the project root (rather than in `~/.poetry`)
-
-Once configured, the following command (run from the project root) will install project dependencies:
+Run the following command (run from the project root) to install project dependencies:
 
 `$ poetry install`
 
-VSCode should then detect the newly create `.venv` folder and prompt to select the interpreter from there.
+VSCode should then detect the newly create `.venv` folder and prompt to select the interpreter from there
 
-To launch the API, run the `app.py` file from within the poetry shell by running the following:
+To launch the API, run the following:
 
 ```bash
 $ cd bank_api
-$ flask run
+$ poetry run flask run
 ```
+
+If you open a poetry shell with the command `poetry shell` then you do not need to preface your commands with "poetry run". E.g. you can execute `flask run` directly
 
 The API should be live with swagger docs visible at http://localhost:5000/.
 
@@ -32,7 +28,7 @@ The API should be live with swagger docs visible at http://localhost:5000/.
 
 You can run both unit and integration tests suites using pytest:
 1. `poetry shell` (if not already active)
-2. `pytest`
+2. `pytest` (from the root directory)
 
 However if you'd like to run/debug tests individually you can run:
 
