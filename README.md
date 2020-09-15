@@ -7,36 +7,31 @@ This is a standalone exercise to practice writing tests and engaging in Test Dri
 This project requires Python 3.7 and uses Poetry for Python to handle dependencies. Follow the instructions 
 [here](https://python-poetry.org/docs/#installation) to set up Poetry.
 
-If this is the first time you're using poetry you'll want to run 
-
-`$ poetry config virtualenvs.in-project true`
-
-This will insure that running `poetry install` below will install the virtual environment in the project root (rather than in `~/.poetry`)
-
-Once configured, the following command (run from the project root) will install project dependencies:
+Run the following command (run from the project root) to install project dependencies:
 
 `$ poetry install`
 
-VSCode should then detect the newly create `.venv` folder and prompt to select the interpreter from there.
+You should get a prompt from VSCode to use the newly added virtual environment. Agree to it.
 
-To launch the API, run the `app.py` file from within the poetry shell by running the following:
+If you do not see a prompt, press `Cmd/Ctrl + Shift + P` and run `Python: Select Interpreter`. Select the python.exe in the newly created `.venv` directory.
+
+To launch the API, run the following:
 
 ```bash
 $ cd bank_api
-$ flask run
+$ poetry run flask run
 ```
 
 The API should be live with swagger docs visible at http://localhost:5000/.
 
 ## Tests
 
-You can run both unit and integration tests suites using pytest:
-1. `poetry shell` (if not already active)
-2. `pytest`
+You can run both unit and integration tests suites using pytest. Run this from the root directory:
 
-However if you'd like to run/debug tests individually you can run:
+`$ poetry run pytest`
 
-`Ctrl/Cmd + Shift + P` => `Discover Tests`.
+Or you can run them from VSCode:
 
-Tests will then appear by clicking the beaker icon on the activity bar on the left edge of VSCode.
+Click the conical flask icon on the activity bar on the left edge of VSCode. Click the refresh icon at the top of the panel to rediscover tests. Click the play icon at the top to run all tests. Click the play icon next to a file or test name to run that file or test individually.
 * Intellisense annotations for running/debugging each test should also appear above the test functions in the code.
+* If test discovery fails, check that Poetry has installed your dependencies and that the Python interpreter is selected correctly - you should be using the executable from the .venv folder.
