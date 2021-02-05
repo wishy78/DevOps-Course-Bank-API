@@ -9,6 +9,7 @@ from bank_api.bank import Bank, OverdrawnError
 from bank_api.bank_reporter import BankReporter
 
 app = Flask(__name__)
+app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 api = Api(app, title='My Banking API',
           description='A simple banking API for learning Test-Driven-Development')
 bank = Bank()
