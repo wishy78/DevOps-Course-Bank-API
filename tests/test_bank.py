@@ -39,7 +39,7 @@ def test_cannot_duplicate_accounts(bank):
 
 def test_cannot_modify_accounts_set(bank):
     accounts = bank.accounts
-    accounts.add(Account('New Account'))
+    accounts.append(Account('New Account'))
 
     assert len(bank.accounts) == 0
 

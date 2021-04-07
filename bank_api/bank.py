@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Set
+from typing import Set, List
 
 
 @dataclass(frozen=True)
@@ -21,14 +21,14 @@ class Bank:
         self._transactions: Set[Transaction] = set()
 
     @property
-    def accounts(self) -> Set[Account]:
+    def accounts(self) -> List[Account]:
         """Get a copy of the bank's accounts"""
-        return self._accounts.copy()
+        return list(self._accounts)
 
     @property
-    def transactions(self) -> Set[Transaction]:
+    def transactions(self) -> List[Transaction]:
         """Get a copy of the bank's transactions"""
-        return self._transactions.copy()
+        return list(self._transactions)
 
     def create_account(self, name: str) -> Account:
         """Creates a new account with the name provided"""
