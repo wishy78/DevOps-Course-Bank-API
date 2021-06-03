@@ -1,4 +1,7 @@
 """Integration tests for app.py"""
+from typing import Type
+from flask.testing import FlaskClient
+from flask.wrappers import Response
 import pytest
 
 from bank_api.app import app
@@ -10,7 +13,7 @@ def client():
     return app.test_client()
 
 
-def test_account_creation(client):
+def test_account_creation(client: FlaskClient):
     # Use the client to make requests e.g.:
     # client.post(...)
     # client.get(...)

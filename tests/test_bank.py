@@ -17,12 +17,12 @@ def test_accounts_are_immutable():
         account.name = 'Mutable'
 
 
-def test_bank_creates_empty(bank):
+def test_bank_creates_empty(bank: Bank):
     assert len(bank.accounts) == 0
     assert len(bank.transactions) == 0
 
 
-def test_can_create_and_get_account(bank):
+def test_can_create_and_get_account(bank: Bank):
     bank.create_account('Test')
     account = bank.get_account('Test')
 
@@ -30,14 +30,14 @@ def test_can_create_and_get_account(bank):
     assert account.name == 'Test'
 
 
-def test_cannot_duplicate_accounts(bank):
+def test_cannot_duplicate_accounts(bank: Bank):
     bank.create_account('duplicate')
     bank.create_account('duplicate')
 
     assert len(bank.accounts) == 1
 
 
-def test_cannot_modify_accounts_set(bank):
+def test_cannot_modify_accounts_set(bank: Bank):
     accounts = bank.accounts
     accounts.append(Account('New Account'))
 
