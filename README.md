@@ -1,6 +1,6 @@
 # Bank API
 
-This is a standalone exercise to practice writing tests and engaging in Test Driven Development (TDD).
+This is a standalone exercise to practice writing tests and engaging in Test Driven Development (TDD). Clone this repository and then open the resulting `DevOps-Course-Bank-API` folder in VSCode. Open it as the project folder - don't open a parent folder and then browse down to the repository folder, otherwise subsequent instructions here will not work.
 
 ## Setup
 
@@ -13,7 +13,7 @@ Run the following command (run from the project root) to install project depende
 
 You should get a prompt from VSCode to use the newly added virtual environment. Agree to it.
 
-If you do not see a prompt, press `Cmd/Ctrl + Shift + P` and run `Python: Select Interpreter`. Select the python.exe in the newly created `.venv` directory.
+If you do not see a prompt, press `Cmd/Ctrl + Shift + P` and run `Python: Select Interpreter`. Select the Python executable in the new `.venv` directory, which is `./.venv/Scripts/python.exe` on Windows or `./.venv/bin/python` on a Mac.
 
 To launch the API, run the following:
 
