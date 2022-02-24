@@ -2,38 +2,28 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Set, List
 
-
-@dataclass(frozen=True)
 class Account:
-    name: str
+    def __init__(self, name: str):
+        self.name = name
 
-
-@dataclass(frozen=True)
 class Transaction:
-    account: Account
-    date: datetime
-    amount: int
-
+    def __init__(self, account: Account, date: datetime, amount: int):
+        self.account = account
+        self.date = date
+        self.amount = amount
 
 class Bank:
     def __init__(self):
-        self._accounts: Set[Account] = set()
-        self._transactions: Set[Transaction] = set()
-
-    @property
-    def accounts(self) -> List[Account]:
-        """Get a copy of the bank's accounts"""
-        return list(self._accounts)
-
-    @property
-    def transactions(self) -> List[Transaction]:
-        """Get a copy of the bank's transactions"""
-        return list(self._transactions)
+        self.accounts: Set[Account] = set()
+        self.transactions: List[Transaction] = []
 
     def create_account(self, name: str) -> Account:
         """Creates a new account with the name provided"""
+        if not name:
+            raise ValueError("Account name cannot be None or empty")
+
         account = Account(name)
-        self._accounts.add(account)
+        self.accounts.add(account)
         return account
 
     def get_account(self, name: str) -> Account:
@@ -47,4 +37,4 @@ class Bank:
         """Add funds to the named account"""
         account = self.get_account(name)
         now = datetime.now()
-        self._transactions.add(Transaction(account, now, amount))
+        self._transactions.append(Transaction(account, now, amount))
