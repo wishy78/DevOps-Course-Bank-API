@@ -9,17 +9,17 @@ This project requires Python 3.7 and uses Poetry for Python to handle dependenci
 
 Run the following command (run from the project root) to install project dependencies:
 
-`$ poetry install`
+`poetry install`
 
-You should get a prompt from VSCode to use the newly added virtual environment. Agree to it.
+If you opened the repository folder in VS Code (and not a parent folder), then you should get a prompt to use the newly added virtual environment. Agree to it.
 
 If you do not see a prompt, press `Cmd/Ctrl + Shift + P` and run `Python: Select Interpreter`. Select the Python executable in the new `.venv` directory, which is `./.venv/Scripts/python.exe` on Windows or `./.venv/bin/python` on a Mac.
 
 To launch the API, run the following:
 
 ```bash
-$ cd bank_api
-$ poetry run flask run
+cd bank_api
+poetry run flask run
 ```
 
 The API should be live with swagger docs visible at http://localhost:5000/.
@@ -28,10 +28,10 @@ The API should be live with swagger docs visible at http://localhost:5000/.
 
 You can run both unit and integration tests suites using pytest. Run this from the root directory:
 
-`$ poetry run pytest`
+`poetry run pytest`
 
 Or you can run them from VSCode:
 
 Click the conical flask icon on the activity bar on the left edge of VSCode. Click the refresh icon at the top of the panel to rediscover tests. Click the play icon at the top to run all tests. Click the play icon next to a file or test name to run that file or test individually.
 * Intellisense annotations for running/debugging each test should also appear above the test functions in the code.
-* If test discovery fails, check that Poetry has installed your dependencies and that the Python interpreter is selected correctly - you should be using the executable from the .venv folder.
+* If test discovery fails, check that "poetry install" ran successfully and that the Python interpreter is selected correctly. See the "setup" section above for details.
