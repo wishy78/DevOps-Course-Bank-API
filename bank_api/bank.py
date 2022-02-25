@@ -3,10 +3,16 @@ from datetime import datetime
 from typing import Set, List
 
 class Account:
+    name: str
+
     def __init__(self, name: str):
         self.name = name
 
 class Transaction:
+    account: Account
+    date: datetime
+    amount: int
+    
     def __init__(self, account: Account, date: datetime, amount: int):
         self.account = account
         self.date = date

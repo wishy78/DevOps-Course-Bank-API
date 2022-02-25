@@ -2,6 +2,8 @@
 
 This is a standalone exercise to practice writing tests and engaging in Test Driven Development (TDD). Clone this repository and then open the resulting `DevOps-Course-Bank-API` folder in VSCode. Open it as the project folder - don't open a parent folder and then browse down to the repository folder, otherwise subsequent instructions here will not work.
 
+Read through this file to get the project running and then follow the instructions in [during_the_workshop.md](./during_the_workshop.md) for the exercise instructions.
+
 ## Setup
 
 This project requires Python 3.7 and uses Poetry for Python to handle dependencies. Follow the instructions 
