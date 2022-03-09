@@ -1,5 +1,3 @@
-from dataclasses import asdict
-
 from flask import Flask
 from flask_restx import Api, Resource, reqparse, fields, abort
 
@@ -26,14 +24,14 @@ class AccountResource(Resource):
     def post(self, name):
         """Create a new named Account"""
         try:
-            return asdict(bank.create_account(name))
+            return bank.create_account(name).to_dict()
         except Exception as e:
             abort(400, str(e))
 
     def get(self, name):
         """Get an Account"""
         try:
-            return asdict(bank.get_account(name))
+            return bank.get_account(name).to_dict()
         except Exception:
             abort(404, 'Account not found')
 

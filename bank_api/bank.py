@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Set, List
 
@@ -7,6 +6,11 @@ class Account:
 
     def __init__(self, name: str):
         self.name = name
+
+    def to_dict(self) -> dict: 
+        return {
+            "name": self.name
+        }
 
 class Transaction:
     account: Account
