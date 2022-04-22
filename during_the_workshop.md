@@ -50,7 +50,11 @@ Look at the tests in `/tests/test_bank.py`. They do a good job of covering the a
 
 The `app.py` file configures Flask and defines the API endpoints. For this exercise we’re using a second library, `flask-restx`, to enhance flask with functionality that's helpful for writing a REST JSON API. This includes automatically returning responses as JSON, and other bells and whistles like the swagger documentation already seen.
 
-You don't need to learn the details of `flask-restx` (see the [docs](https://flask-restx.readthedocs.io/en/latest/) if you're interested), but it's useful to recap how the routes are structured as it's a bit different to vanilla flask. This may look a little odd, but give it a try and you'll find it's a very sensible way of doing things for a REST API! The Products class could be expanded with other methods (e.g. `post()`, `patch()`, `put()`, `delete()`) to handle additional HTTP methods.
+You don't need to learn the details of `flask-restx` (see the [docs](https://flask-restx.readthedocs.io/en/latest/) if you're interested), but if you're interested in reading app.py, here's a recap of how the routes are structured, as it's a bit different to vanilla Flask:
+- There's a class for each path, e.g. all requests to "/money" will be handled by the `MoneyResource` class
+- Within the class there is a function for each HTTP method that the app will handle. 
+
+This may look a little odd, but give it a try and you'll find it's a very sensible way of doing things for a REST API! The AccountResource class could be expanded with other methods. For example, a `put()` method could handle PUT requests, updating accounts.
 
 ## Part 2 - Integration Tests
 
@@ -58,9 +62,21 @@ You now have a complete unit test suite for the Bank class, but what about all t
 
 Unfortunately, the previous developer didn't care much for integration tests. You'll need to write them. You don't need loads of integration tests, perhaps just one or two in this case. Integration tests check that the components of the system work together correctly. They don't need to handle every single edge case - that's a job for unit testing.
 
-Write an integration test in `test_app.py` that uses the client fixture to send a request to the `Accounts` resource POST endpoint (i.e. a POST request to `/accounts/<account name here>`). Check the response status code and body to ensure the item was created correctly.
+Write an integration test in `test_app.py` that uses the client fixture to send a POST request to create an Account (i.e. make a POST request to `/accounts/<account name here>`). Assert that the response status code and body are what you expect.
+
+> You don't need to care about the implementation of app.py because you will be interacting with the app via Flask's "test_client" - pretending to make HTTP requests to an application and then looking at the HTTP response.
 
 Expand your integration test to also check you can query the created account via the `Accounts` resource GET endpoint (i.e. a GET request to the same path)
+
+<details markdown="1"><summary>Hint for making assertions about the response</summary>
+
+The result of `client.get` or `client.post` is a test response object. It has two attributes you want to look at:
+- `status_code` gives you a number, e.g. 200 for a status of "OK".
+- `data` gives you the response body. This is a byte array rather than a string, because not all HTTP bodies just hold text.
+  - To compare it to an expected string, convert it to a string first: `response.data.decode()`
+  - To remove uninteresting whitespace characters (like the newline character) from the start and end of a string, use: `your_string.strip()`
+
+</details>
 
 ## Stretch Goals
 
