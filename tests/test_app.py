@@ -14,8 +14,12 @@ def client():
 
 
 def test_account_creation(client: FlaskClient):
-    # Use the client to make requests e.g.:
-    # client.post(...)
-    # client.get(...)
-    # https://flask.palletsprojects.com/en/1.1.x/testing/
-    pass
+
+    response = client.post('/accounts/qwerty')
+    assert response.status_code == 200
+    assert response.json['name'] == 'qwerty'
+
+    response = client.get('/accounts/qwerty')
+    assert response.status_code == 200
+    assert response.json['name'] == 'qwerty'
+    

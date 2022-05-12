@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Set, List
-
+import math
 class Account:
     name: str
 
@@ -45,6 +45,10 @@ class Bank:
 
     def add_funds(self, name: str, amount: int) -> None:
         """Add funds to the named account"""
-        account = self.get_account(name)
-        now = datetime.now()
-        self.transactions.append(Transaction(account, now, amount))
+        if isinstance(amount,int) and amount > 0:     
+            account = self.get_account(name)
+            now = datetime.now()
+            self.transactions.append(Transaction(account, now, amount))
+        else:
+            raise ValueError('This is not a valid number in +pounds, eg no "- numbers" and "no pence"')
+
